@@ -1,7 +1,7 @@
 import { AuthenticationError } from '@/domain/errors'
 import { FacebookAuthenticationService } from '@/data/services'
 import { LoadFacebookUserApi } from '@/data/contracts/apis/facebook'
-import { FacebookAccount } from '@/domain/models'
+import { AccessToken, FacebookAccount } from '@/domain/models'
 import {
   LoadUserAccountRepository,
   SaveFacebookAccountRepository
@@ -71,7 +71,10 @@ describe('FacebookAuthenticationService', () => {
   it('should call TokenGenerator with correct params', async () => {
     await sut.perform({ token })
 
-    expect(crypto.generateToken).toHaveBeenCalledWith({ key: 'any_acount_id' })
+    expect(crypto.generateToken).toHaveBeenCalledWith({
+      key: 'any_acount_id',
+      expirationInMs: AccessToken.expirationInMS
+    })
     expect(crypto.generateToken).toHaveBeenCalledTimes(1)
   })
 })
