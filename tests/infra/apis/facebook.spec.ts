@@ -23,7 +23,7 @@ describe("FacebookApi", () => {
       .mockResolvedValueOnce({ access_token: "any_app_token" })
       .mockResolvedValueOnce({ data: { user_id: 'any_user_id' } })
       .mockResolvedValueOnce({
-        facebookId: 'any_fb_id',
+        id: 'any_fb_id',
         name: 'any_fb_id',
         email: 'any_fb_email'
       })
