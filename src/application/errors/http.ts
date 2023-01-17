@@ -12,3 +12,10 @@ export class RequiredFieldError extends Error {
     this.name = `The field ${fieldName} is required`
   }
 }
+
+export class UnauthorizedError extends Error {
+  constructor() {
+    super('Unauthorized')
+    this.name = 'Unauthorized'
+  }
+}
